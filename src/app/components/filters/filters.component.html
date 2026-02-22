@@ -1,0 +1,30 @@
+<section class="filters-container glass-panel animate-fade-in">
+    <div class="search-box">
+        <span class="icon">🔍</span>
+        <input type="text" placeholder="Search premium products..." [(ngModel)]="searchText" (keyup)="onFilterChange()">
+    </div>
+
+    <div class="filter-group">
+        <select [(ngModel)]="category" (change)="onFilterChange()">
+            <option value="all">All Categories</option>
+            <option value="clothing">Clothing</option>
+            <option value="electronics">Electronics</option>
+            <option value="accessories">Accessories</option>
+            <option value="furniture">Furniture</option>
+            <option value="beauty">Beauty</option>
+            <option value="sports">Sports</option>
+        </select>
+
+        <div class="price-slider">
+            <label>Max Price: <span class="price-val">${{maxPrice}}</span></label>
+            <input type="range" min="0" max="500" [(ngModel)]="maxPrice" (change)="onFilterChange()"
+                (input)="onFilterChange()">
+        </div>
+
+        <select [(ngModel)]="sort" (change)="onFilterChange()">
+            <option value="default">Sort by</option>
+            <option value="low-high">Price: Low to High</option>
+            <option value="high-low">Price: High to Low</option>
+        </select>
+    </div>
+</section>

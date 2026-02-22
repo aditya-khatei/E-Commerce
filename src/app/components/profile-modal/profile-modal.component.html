@@ -1,0 +1,38 @@
+<div class="modal-overlay" [class.active]="isOpen$ | async" (click)="close()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+        <h2>User Profile</h2>
+        <p class="subtitle">Complete your profile to manage your orders.</p>
+
+        <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" [(ngModel)]="name" placeholder="Enter your name">
+        </div>
+
+        <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" [(ngModel)]="email" placeholder="Enter your email">
+        </div>
+
+        <!-- Order History Section -->
+        <div class="order-history" *ngIf="orders.length > 0">
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Order History</h3>
+            <div class="order-list">
+                <div class="order-card" *ngFor="let order of orders">
+                    <div class="order-header">
+                        <span class="order-id">{{ order.id }}</span>
+                        <span class="order-date">{{ order.date }}</span>
+                    </div>
+                    <div class="order-body">
+                        <span>{{ order.items }} Items</span>
+                        <span class="order-total">${{ order.total }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="outline" (click)="close()">Close</button>
+            <button (click)="saveProfile()">Save Profile</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<header class="glass-panel main-header">
+    <div class="logo">
+        <h1>Shop<span>Ease</span></h1>
+    </div>
+    <div class="actions">
+        <button class="action-btn outline" (click)="toggleTheme()"
+            [title]="(isDark$ | async) ? 'Light Mode' : 'Dark Mode'">
+            <span *ngIf="isDark$ | async; else lightIcon">☀️</span>
+            <ng-template #lightIcon>🌙</ng-template>
+        </button>
+        <button class="action-btn outline" (click)="toggleProfile()">
+            👤 Profile
+        </button>
+        <button class="action-btn outline" (click)="toggleWishlist()">
+            ❤️ Wishlist
+            <span class="badge badge-wishlist" *ngIf="(wishlistCount$ | async) as wCount">{{ wCount }}</span>
+        </button>
+        <button class="action-btn outline cart-btn" (click)="toggleCart()">
+            🛒 Cart
+            <span class="badge badge-cart" *ngIf="(cartCount$ | async) as cCount">{{ cCount }}</span>
+        </button>
+    </div>
+</header>

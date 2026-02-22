@@ -1,0 +1,29 @@
+<!-- Loading Skeletons -->
+<div class="product-grid" *ngIf="isLoading">
+    <div class="product-card skeleton-card" *ngFor="let i of [1,2,3,4,5,6]">
+        <div class="skeleton-image skeleton-shimmer"></div>
+        <div class="details">
+            <div class="skeleton-text skeleton-shimmer" style="width: 40%; margin-bottom: 0.5rem"></div>
+            <div class="skeleton-text skeleton-shimmer" style="width: 80%; height: 1.5rem; margin-bottom: 1rem"></div>
+            <div class="footer">
+                <div class="skeleton-text skeleton-shimmer" style="width: 30%; height: 1.5rem"></div>
+                <div class="skeleton-btn skeleton-shimmer"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actual Products -->
+<div class="product-grid animate-fade-in" *ngIf="!isLoading && (products$ | async) as products">
+    <ng-container *ngIf="products.length > 0; else emptyState">
+        <app-product-card *ngFor="let product of products" [product]="product">
+        </app-product-card>
+    </ng-container>
+
+    <ng-template #emptyState>
+        <div class="empty-state glass-panel">
+            <h2>No products found</h2>
+            <p>Try adjusting your search or filters to find what you're looking for.</p>
+        </div>
+    </ng-template>
+</div>

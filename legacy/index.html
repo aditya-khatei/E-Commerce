@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopease-Mini E-Commerce</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>ShopEase</h1>
+        <div class="actions">
+            <div class="cart" onclick="toggleDarkMode()">
+                🌙 Dark Mode
+            </div>
+            <div class="cart" onclick="toggleProfile()">
+                👤 Profile
+            </div>
+            <div class="cart" onclick="toggleWishlist()">
+                ❤️ Wishlist <span id="wishlistCount">0</span>
+            </div>
+            <div class="cart" onclick="toggleCart()">
+                🛒 Cart <span id="cartCount">0</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="search">
+        <input type="text" id="SearchBox" placeholder="🔍 Search products......" onkeyup="Search()">
+    </div>
+
+    <div id="profileModal">
+        <div id="profileContent">
+            <h2>User Profile</h2>
+            <input type="text" id="userName" placeholder="Enter your name">
+            <input type="email" id="userEmail" placeholder="Enter your email">
+            <div class="modal-footer">
+                <button onclick="saveProfile()">Save Profile</button>
+                <button onclick="toggleProfile()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- wishlist modal -->
+    <div id="wishlistModal">
+        <div id="wishlistContent">
+            <h2>Your Wishlist</h2>
+            <div id="wishlistItems"></div>
+            <button onclick="toggleWishlist()">Close</button>
+            <button onclick="clearWishlist()">Clear All</button>
+        </div>
+    </div>
+
+    <section class="filters">
+        <select id="categoryFilter" onchange="applyFilters()">
+            <option value="all">All Categories</option>
+            <option value="clothing">Clothing</option>
+            <option value="electronics">Electronics</option>
+            <option value="accessories">Accessories</option>
+        </select>
+
+        <label>
+            Price:<span id="priceValue">150</span>$
+            <input type="range" id="priceFilter" min="0" max="150" value="150" oninput="applyFilters()">
+        </label>
+
+        <select id="sortFilter" onchange="applyFilters()">
+            <option value="default">Sort by</option>
+            <option value="low-high">Price: Low - High</option>
+            <option value="high-low">Price: High - Low</option>
+        </select>
+    </section>
+
+    <section class="products" id="productList"></section>
+
+    <div id="cartModal">
+        <div id="cartContent">
+            <h2>Your Cart</h2>
+            <div id="cartItems"></div>
+            <h3>Total: $<span id="cartTotal">0</span></h3>
+            <input type="text" id="couponCode" placeholder="Enter coupon">
+            <button onclick="applyCoupon()">Apply</button>
+            <button onclick="checkout()">Checkout</button>
+            <button onclick="toggleCart()">Close</button>
+            <button onclick="clearCart()">Clear All</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+.product-card {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 75%;
+    /* 4:3 Aspect Ratio */
+    overflow: hidden;
+}
+
+.image-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.view-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    z-index: 2;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(2px);
+}
+
+.view-overlay span {
+    background: white;
+    color: #111;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 0.85rem;
+    transform: translateY(10px);
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .view-overlay {
+    opacity: 1;
+}
+
+.product-card:hover .view-overlay span {
+    transform: translateY(0);
+}
+
+.product-card:hover .image-wrapper img {
+    transform: scale(1.05);
+}
+
+.wishlist-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: var(--transition);
+}
+
+.wishlist-btn:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+.wishlist-btn.active {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+.details {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.category {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.name {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+    flex: 1;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+    color: var(--primary);
+}
+
+.add-btn {
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+}

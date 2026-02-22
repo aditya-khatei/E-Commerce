@@ -1,0 +1,57 @@
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    z-index: 100;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text-main);
+}
+
+.logo span {
+    color: var(--primary);
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.action-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    backdrop-filter: blur(4px);
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    height: 20px;
+    min-width: 20px;
+    border-radius: 10px;
+    padding: 0 6px;
+    margin-left: 4px;
+}
+
+.badge-cart {
+    background: var(--primary);
+}

@@ -1,0 +1,51 @@
+<div class="modal-overlay" [class.active]="isOpen$ | async" (click)="close()">
+    <div class="modal-content quick-view-content" (click)="$event.stopPropagation()"
+        *ngIf="product$ | async as product">
+        <button class="close-btn top-right" (click)="close()">✕</button>
+
+        <div class="qv-grid">
+            <!-- Image Gallery Left Side -->
+            <div class="qv-gallery">
+                <img [src]="product.img" [alt]="product.name" class="main-image">
+                <div class="thumbnail-strip">
+                    <img [src]="product.img" class="thumb active">
+                    <!-- Dummy thumbs simulating gallery -->
+                    <img [src]="product.img + '&flip=1'" class="thumb">
+                    <img [src]="product.img + '&blur=1'" class="thumb">
+                </div>
+            </div>
+
+            <!-- Details Right Side -->
+            <div class="qv-info">
+                <span class="category">{{ product.category | uppercase }}</span>
+                <h2>{{ product.name }}</h2>
+                <div class="price-stock">
+                    <span class="price">${{ product.price }}</span>
+                    <span class="stock badge">In Stock</span>
+                </div>
+
+                <p class="description">
+                    Experience premium quality with the {{ product.name }}. Designed for both style and durability, this
+                    item is perfect for everyday use. Limited quantities available.
+                </p>
+
+                <ul class="features">
+                    <li>✨ Premium Materials</li>
+                    <li>🛡️ 1 Year Warranty</li>
+                    <li>📦 Free Express Shipping</li>
+                </ul>
+
+                <div class="purchase-zone">
+                    <div class="qty-selector">
+                        <button (click)="changeQty(-1)">-</button>
+                        <input type="number" readonly [value]="quantity">
+                        <button (click)="changeQty(1)">+</button>
+                    </div>
+                    <button class="add-btn" (click)="addToCart(product)">
+                        Add {{ quantity }} to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

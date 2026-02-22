@@ -1,0 +1,70 @@
+.checkout-flow {
+    max-width: 600px;
+}
+
+.checkout-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.checkout-header h2 {
+    margin-bottom: 1rem;
+}
+
+.progress-bar {
+    height: 6px;
+    background: var(--border-color);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--primary);
+    transition: width 0.4s ease;
+}
+
+.step-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.step-container h3 {
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text-muted);
+}
+
+.form-group input {
+    width: 100%;
+}
+
+.modal-footer {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.success-step {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.confetti {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: bounce 2s infinite ease-in-out;
+}

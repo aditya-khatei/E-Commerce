@@ -1,0 +1,35 @@
+<div class="modal-overlay" [class.active]="isOpen$ | async" (click)="close()">
+    <div class="slide-panel" [class.active]="isOpen$ | async" (click)="$event.stopPropagation()">
+        <div class="panel-header">
+            <h2>Your Wishlist</h2>
+            <button class="close-btn" (click)="close()">✕</button>
+        </div>
+
+        <div class="panel-content">
+            <ng-container *ngIf="wishlist$ | async as items">
+                <div class="empty-list" *ngIf="items.length === 0">
+                    <p>Your wishlist is empty.</p>
+                </div>
+
+                <div class="wishlist-items">
+                    <div class="wishlist-item" *ngFor="let item of items">
+                        <img [src]="item.img" [alt]="item.name">
+                        <div class="item-details">
+                            <h4>{{ item.name }}</h4>
+                            <p class="price">${{ item.price }}</p>
+                        </div>
+                        <div class="actions">
+                            <button class="icon-btn" (click)="moveToCart(item)" title="Move to Cart">🛒</button>
+                            <button class="icon-btn" (click)="removeItem(item.id)" title="Remove">🗑️</button>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+
+        <div class="panel-footer" *ngIf="wishlist$ | async as items">
+            <button class="clear-btn outline" (click)="clear()" *ngIf="items.length > 0" style="width: 100%;">Clear
+                All</button>
+        </div>
+    </div>
+</div>
